@@ -10,6 +10,52 @@ $(document).ready(function(){
             }
         });//scroll menu
     
+    //AJAX MENU
+    
+    
+    $(".home").click(function(){
+        $("main").load("ajax/home.html");
+        
+      
+        $(".home").toggleClass("active");
+    }); 
+    
+    $(".about").click(function(){
+        $("main").load("ajax/about.html");
+        
+     
+        $(".about").toggleClass("active");
+    });
+    
+    $(".catalog").click(function(){
+        $("main").load("ajax/catalog.html");
+        
+         $(".catalog").toggleClass("active");
+    }); 
+    
+    $(".services").click(function(){
+        $("main").load("ajax/services.html");
+        
+        $(".services").toggleClass("active");
+    });
+    
+    $(".news").click(function(){
+        $("main").load("ajax/news.html");
+        
+       $(".news").toggleClass("active");
+    });
+    
+    $(".contacts").click(function(){
+        $("main").load("ajax/contacts.html");
+        
+        $(".contacts").toggleClass("active");
+    });
+    
+        //AJAX loginForm
+    $("#signInMobile").click(function(){
+        $(".loginForm").load("ajax/login.html");
+    });
+    
         //HEADER SLIDER
 var p =[];
     p[0] = "images/library1.jpg";
@@ -23,15 +69,11 @@ var p =[];
     
     var i = 0;
     
-     $("#slider > div > div > ul > li > img").click(function(){
+     $("header > div > ul > li > img").click(function(){
                           var a = $(this).attr("src");
-                          $("header").css("background","url("+a+")"); 
+                          $("header").css("background","url("+a+")").css("background-size","100%"); 
                           i = parseInt(a.replace(/\D+/g,"")); //!!!! ПЕРЕРОБИТИ ПІД ІНДЕКС !!!!!
 
-                          
-         
-         
-         
                        });
     
 function timeout() {

@@ -6,10 +6,10 @@ header{
     font-weight: bold;
     background: url(../images/library1.jpg);
     background-position:bottom; 
-    background-size:cover; 
+    background-size:100%; 
     background-repeat:no-repeat; 
 }
-#slider > div > div{
+header > div{
     padding-top: 50px;
     color:white;
     
@@ -17,8 +17,8 @@ header{
 .cover{
     z-index: 1;
     height: 100%;
-    background: black;
-    opacity: 0.5;
+    background-color: black;
+/*  opacity: 0.5; */
 }
 /*MENU*/
 .active{
@@ -42,6 +42,7 @@ nav{
 .main_menu li a{
     text-decoration: none;
     color:white;
+    cursor: pointer;
 }
 .main_menu li a:hover{
     color:#ecaf69;
@@ -80,9 +81,14 @@ nav{
 .scrollMenu a{
     color:white;
 }
+/*SELECT MENU*/
+.select_menu{
+    display: none;
+}
 /*SLIDER UL*/
 .siderPict{
     list-style: none;
+    padding-left: 0;
 }
 .siderPict li{
     margin-left: 10px;
@@ -100,5 +106,83 @@ nav{
     cursor: pointer;
 }
 #sliderText{
-    height: 93px;
+    height: 160px;
 }
+
+
+#myModal  div.modal-dialog li{
+    width:45%;
+}
+#signInMobile{
+    display:none;
+}
+.loginForm{
+    display: none;
+    padding: 20px;
+}
+                                            /*  MEDIA  */
+/* 650px */
+
+@media screen and (max-width:650px){
+    header{
+        background-size: auto;
+    }
+    .main_menu li{
+        margin-left: 20px !important;
+    }
+    #sliderText{ 
+        height:200px;
+    }
+    .siderPict li{
+        width: 70px;
+        height: 70px;
+    }
+     .siderPict li img{
+        width: 60px;
+        height: 60px;
+    }
+    .scrollMenu{
+        display: none !important;
+}
+    
+/* 450px */
+@media screen and (max-width:450px){
+    .scrollMenu{
+        display: none;
+    }
+    .main_menu{
+        display:none; 
+    }
+    .select_menu{
+        display: block;
+        margin: 0 auto;
+        width:80%;
+        color: black;
+        text-align: center !important;       
+    }
+    .select_menu option{
+        color: black;
+        text-align: center !important;
+    }
+    #sliderText{ 
+        height:220px;
+    }
+/*    Troble!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+    .modal-backdrop,modal,modal-dialog,modal-header{
+        display: none;
+    }
+/*    /Troble!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+    #signIn{
+        display: none;
+    }
+    .loginForm{
+        display: block;
+    }
+    #signInMobile{
+        display:block;
+        margin: 0 auto;
+    }
+    
+    
+}
+
