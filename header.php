@@ -1,25 +1,23 @@
                          <!--           SCROLL MENU             -->
-                    <nav class="scrollMenu text-center">
-                        <ul class="main_menu">
+                    <nav class="scrollMenu  text-center">
+                        <ul class="main_menu menuScroll">
                            <li><a   class="home">Home</a></li>
                                 <li><a  class="about">About</a></li>
                                 <li><a  class="catalog">Catalog</a></li>
-                                <li><a  class="services">Services</a></li>
                                 <li><a  class="news">News</a></li>
                                 <li><a  class="contacts">Contacts</a></li>
                         </ul>
                      </nav>
-          <header>
+          <header class="container-fluid noPadding">
                         <!--           /SCROLL MENU             -->
                <div class="container text-center">
                     <div class="text-center h1">PUBLIC  LIBRARY</div>
                             <!--         MAIN MENU           -->
                         <nav class="text-center">
-                            <ul class="main_menu">
+                            <ul class="main_menu menuMain">
                                 <li><a  class="home">Home</a></li>
                                 <li><a  class="about">About</a></li>
                                 <li><a  class="catalog">Catalog</a></li>
-                                <li><a  class="services">Services</a></li>
                                 <li><a  class="news">News</a></li>
                                 <li><a  class="contacts">Contacts</a></li>
                             </ul>
@@ -31,12 +29,9 @@
                                 <option class="home" selected >Home</a></option>
                                 <option class="about">About</a></option>
                                 <option class="catalog">Catalog</option>
-                                <option class="services">Services</option>
                                 <option class="news">News</option>
                                 <option class="contacts">Contacts</option>
                             </select>
-                            
-                            
                         </form>
                                  <!--    /SELECT MENU          -->
                         </nav>
@@ -44,17 +39,18 @@
                         <div class="container text-center" id="sliderText">
                        
                         </div>
-                    <ul class="text-center siderPict">
-                        <li><img src="images/library1.jpg"/></li>
-                        <li><img src="images/library2.jpg"/></li>
-                        <li><img src="images/library3.jpg"/></li>
-                    </ul>   
+                            <ul class="text-center siderPict">
+                                <li id="one"><div class="cover"></div></li>
+                                <li id="two"><div class="cover"></div></li>
+                                <li id="three"><div class="cover"></div></li>
+                            </ul>   
                     
                               <!-- Button trigger modal -->
 <button type="button" id="signIn" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
  Sign in
 </button>
-<button type="button" id="signInMobile" class="btn btn-primary btn-lg">Sign in</button>
+<button type="button" id="signInMobile" class="btn btn-primary btn-lg">
+ Sign in</button>
                              
                               <!-- /Button trigger modal -->
 
@@ -82,13 +78,13 @@
         <div role="tabpanel" class="tab-pane text-left active" id="login">
         <br/>
             <form class="form-horizontal" role="form">
-                  <div class="form-group">
+                  <div class="form-group text-center">
                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
                       <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group text-center">
                     <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                     <div class="col-sm-10">
                       <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>

@@ -1,162 +1,120 @@
-$(document).ready(function(){
-    
-        //SCROLL MENU
-     var $menu = $(".scrollMenu");
-        $(window).scroll(function(){
-            if ( $(this).scrollTop() > 100 && $menu.css("display","none") ){
-                $menu.css("display","block");
-            } else if($(this).scrollTop() <= 100 && $menu.css("display","block") ) {
-                $menu.css("display","none");
-            }
-        });//scroll menu
-    
+$(document).ready(function () {
+
+   $("main").load("ajax/home.html");
+
+    //SCROLL MENU
+    var $menu = $(".scrollMenu");
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100 && $menu.css("display", "none")) {
+            $menu.css("display", "block");
+        } else if ($(this).scrollTop() <= 100 && $menu.css("display", "block")) {
+            $menu.css("display", "none");
+        }
+    }); //scroll menu display
+
     //AJAX MENU
-    
-    
-    $(".home").click(function(){
-        $("main").load("ajax/home.html");
-        
-      
-        $(".home").toggleClass("active");
-    }); 
-    
-    $(".about").click(function(){
-        $("main").load("ajax/about.html");
-        
-     
-        $(".about").toggleClass("active");
+
+    var ajax = [];
+    ajax[0] = "ajax/home.html";
+    ajax[1] = "ajax/about.html";
+    ajax[2] = "ajax/catalog.html";
+    ajax[3] = "ajax/news.html";
+    ajax[4] = "ajax/contacts.html";
+
+    var s = 0;
+    $(".menuMain").on('click', 'li', function () {
+        s = $('.menuMain li').index(this);
+        $.ajax({
+            url: ajax[s],
+            type: "GET",
+            dataType: "html"
+        }).done(function (data) {
+            $("main").html(data)
+        });
+        $(".menuMain li").removeClass("active");
+        $(this).addClass("active");
     });
-    
-    $(".catalog").click(function(){
-        $("main").load("ajax/catalog.html");
-        
-         $(".catalog").toggleClass("active");
-    }); 
-    
-    $(".services").click(function(){
-        $("main").load("ajax/services.html");
-        
-        $(".services").toggleClass("active");
+
+    $(".menuScroll").on('click', 'li', function () {
+        s = $('.menuScroll li').index(this);
+        $.ajax({
+            url: ajax[s],
+            type: "GET",
+            dataType: "html"
+        }).done(function (data) {
+            $("main").html(data)
+        });
+        $(".scrollMenu li").removeClass("active");
+        $(this).addClass("active");
     });
-    
-    $(".news").click(function(){
-        $("main").load("ajax/news.html");
-        
-       $(".news").toggleClass("active");
+
+    $(".select_menu").change(function () {
+        s = $(".select_menu option:selected").index();
+         $.ajax({
+            url: ajax[s],
+            type: "GET",
+            dataType: "html"
+        }).done(function (data) {
+            $("main").html(data)
+        });
     });
-    
-    $(".contacts").click(function(){
-        $("main").load("ajax/contacts.html");
-        
-        $(".contacts").toggleClass("active");
+
+    //AJAX loginForm
+    $("#signInMobile").click(function () {
+        $("#signInMobile").toggleClass("toggle");
+        if ($("#signInMobile").hasClass("toggle")) {
+            $(".loginForm").load("ajax/login.html");
+            //scrool to loginForm
+            $('html, body').animate({
+                scrollTop: $($(this)).offset().top
+            }, 500);
+        } else {
+            $(".loginForm").empty();
+        }
     });
-    
-        //AJAX loginForm
-    $("#signInMobile").click(function(){
-        $(".loginForm").load("ajax/login.html");
-    });
-    
-        //HEADER SLIDER
-var p =[];
+
+    //HEADER SLIDER
+    // масив з картинками
+    var p = [];
     p[0] = "images/library1.jpg";
     p[1] = "images/library2.jpg";
     p[2] = "images/library3.jpg";
-    
+
+    //масив з текстом
     var text = [];
-        text[1] = "<h2>CREATE YOUR OWN TUTOR PROFILE FOR FREE</h2><p>at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptaum zzelenit augue duis dolore te feugait nulla facilisi. Typi non</p>";
-        text[2] = "<h2>THE WONDERFUL WORLD OF READING</h2><p>se et accumsan et iusto odio dignissim qui blandit praesent luptaum zzelenit augue duis dolore te feugait nulla facilisi. Typi non habent clari</p>";
-        text[3] = "<h2>CREATE YOUR FUTURE WITH US!</h2><p>et iusto odio dignissim qui blandit praesent luptaum zzelenit augue duis dolore te feugait nulla facilisi. Typi non habent claritatem insita</p>";
-    
-    var i = 0;
-    
-     $("header > div > ul > li > img").click(function(){
-                          var a = $(this).attr("src");
-                          $("header").css("background","url("+a+")").css("background-size","100%"); 
-                          i = parseInt(a.replace(/\D+/g,"")); //!!!! ПЕРЕРОБИТИ ПІД ІНДЕКС !!!!!
+    text[0] = "<h2>CREATE YOUR OWN TUTOR PROFILE FOR FREE</h2><p>at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptaum zzelenit augue duis dolore te feugait nulla facilisi. Typi non</p>";
+    text[1] = "<h2>THE WONDERFUL WORLD OF READING</h2><p>se et accumsan et iusto odio dignissim qui blandit praesent luptaum zzelenit augue duis dolore te feugait nulla facilisi. Typi non habent clari</p>";
+    text[2] = "<h2>CREATE YOUR FUTURE WITH US!</h2><p>et iusto odio dignissim qui blandit praesent luptaum zzelenit augue duis dolore te feugait nulla facilisi. Typi non habent claritatem insita</p>";
 
-                       });
-    
-function timeout() {
-                   setTimeout(function () {
-                       if(i >= p.length){
-                          i = 0; 
-                        }
-                       
-                      
-                       
-                        $("header").css("background","url("+p[i++]+")");
-                       
-                        $("#sliderText").append(text[i]);
-                       timeout();
-                   }, 5000);
-                        setTimeout(function () {
-                        $("h2").remove();
-                        $("p").remove();
-                        }, 10000);
-               }
+    //Slider Buttons
+
+    var i = 0;
+    $(".siderPict").on('click', 'li', function () {
+        var i = $('.siderPict li').index(this);
+        $("header").css("background", "url(" + p[i] + ")");
+
+        $("#sliderText").empty();
+
+        $("#sliderText").append(text[i]);
+    });
+
+    // змінює картинку в хедері і текст
+
+    function timeout() {
+        setTimeout(function () {
+            if (i >= p.length) {
+                i = 0;
+            }
+            $("header").css("background", "url(" + p[i] + ")");
+            $("#sliderText").append(text[i]);
+            i++;
             timeout();
-    
-    
-    
-    
-/*
+        }, 3000);
 
-  $("#slider > div > div > ul > li > img").click(function(){
-                          var a = $(this).attr("src");
-                          $("header").css("background","url("+a+")"); 
-                          i = parseInt(a.replace(/\D+/g,""));
-
-                       });
-
-*/    
-    
-/*
-
-    var i = 0;
-    
-function timeout() {
-               setTimeout(function () {
-                   if(i >= p.length){
-                      i = 0; 
-                    }
-                    $("header").css("background","url("+p[i++]+")");
-                   timeout();
-               }, 5000);
-               }
-    
+        setTimeout(function () {
+            $("#sliderText").empty();
+        }, 6000);
+    }
     timeout();
     
-
-*/    
-    
-    
-    
-    
-    
-    
-    
-    
 });
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
